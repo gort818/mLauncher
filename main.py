@@ -95,7 +95,8 @@ class App(Gtk.Application):
 		window.show_all()
 
 	def on_about_activate(self, *agrs):
-		builder.get_object("aboutdialog").show()
+		builder.get_object("aboutdialog").run()
+		builder.get_object("aboutdialog").hide()
 
 	def on_quit_activate(self, *args):
 		self.quit()
@@ -161,9 +162,6 @@ class Handler:
 
 	def on_radiobuttonIcon_group_changed(self, button):
 		self.updateRadios()
-
-	def onDeleteWindow(self, *args):
-		Gtk.main_quit(*args)
 
 	def buttonSave_clicked_cb(self, button):
 		name=builder.get_object("entryName").get_text().strip()
